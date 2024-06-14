@@ -1,5 +1,12 @@
-{
-    "전창재": {
+import pymongo
+
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client['faculty']
+collection = db['detail']
+
+data =[
+    {
+        "kor": "전창재",
         "eng": "Jeon Chang-jae",
         "email": "cchun@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -8,10 +15,12 @@
         "degree": "공학박사(KAIST)",
         "lab": {
             "location": "대양AI센터 505",
-            "phone": "02-3408-3237"
+            "phone": "02-3408-3237",
+            "site": "https://sites.google.com/view/aiotl"
         }
     },
-    "심태용": {
+    {
+        "kor": "심태용",
         "eng": "Shim Tae-yong",
         "email": "tysim@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -20,10 +29,12 @@
         "degree": "공학박사(성균관대학교)",
         "lab": {
             "location": "대양AI센터 518",
-            "phone": "02-3408-1866"
+            "phone": "02-3408-1866",
+            "site": "https://sites.google.com/view/bio-ai"
         }
     },
-    "이수진": {
+    {
+        "kor": "이수진",
         "eng": "Lee Su-jin",
         "email": "genegraphy@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -32,10 +43,12 @@
         "degree": "공학박사(서강대학교)",
         "lab": {
             "location": "대양AI센터 425",
-            "phone": "02-3408-1867"
+            "phone": "02-3408-1867",
+            "site": "https://home.sejong.ac.kr/~genegraphy/"
         }
     },
-    "구영현": {
+    {
+        "kor": "구영현",
         "eng": "Koo Young-hyun",
         "email": "yhgu@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -47,19 +60,22 @@
             "phone": "02-3408-3253"
         }
     },
-    "김정현": {
+    {
+        "kor": "김정현",
         "eng": "Kim Jung-hyun",
-        "email": "j.kim@sejong.ac.k",
+        "email": "j.kim@sejong.ac.kr",
         "position": "조교수/인공지능학과",
         "major": "전기전자공학",
         "doctoral": "연세대학교 전기전자공학",
         "degree": "공학박사(연세대학교)",
         "lab": {
             "location": "대양AI센터 507호",
-            "phone": "02-3408-3238"
+            "phone": "02-3408-3238",
+            "site": "https://sites.google.com/view/lab-dia"
         }
     },
-    "신승협": {
+    {
+        "kor": "신승협",
         "eng": "Shin Seung-hyeop",
         "email": "shshin@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -68,10 +84,12 @@
         "degree": "공학박사(서울대학교)",
         "lab": {
             "location": "대양AI센터 310A호",
-            "phone": "02-3408-3252"
+            "phone": "02-3408-3252",
+            "site": "https://sites.google.com/view/sju-aisl/home?authuser=0"
         }
     },
-    "이동훈": {
+    {
+        "kor": "이동훈",
         "eng": "Lee Dong-hoon",
         "email": "donghoun.lee@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -80,10 +98,11 @@
         "degree": "공학박사(카이스트)",
         "lab": {
             "location": "다산관 411",
-            "phone": ""
+            "phone": "02-3408-3738"
         }
     },
-    "모하메드 알-마스니": {
+    {
+        "kor": "모하메드 알-마스니",
         "eng": "Mohammed Al-Masni",
         "email": "m.almasani@sejong.ac.kr",
         "position": "조교수/인공지능학과",
@@ -95,8 +114,9 @@
             "phone": "02-6935-2643"
         }
     },
-    "무함마드 샤프루딘": {
-        "eng": "MUHHAMAD SYAFRUDIN",
+    {
+        "kor": "무함마드 샤프루딘",
+        "eng": "Muhhamad Syafruddin",
         "email": "udin@sju.ac.kr",
         "position": "조교수/인공지능학과",
         "major": "정보공학(소프트웨어공학)/산업시스템공학",
@@ -107,7 +127,8 @@
             "phone": "02-3408-1879"
         }
     },
-    "김장겸": {
+    {
+        "kor": "김장겸",
         "eng": "Kim Jang-kyum",
         "email": "jk.kim@sejong.ac.kr",
         "position": "조교수/인공지능데이터사이언스학과",
@@ -115,7 +136,14 @@
         "degree": "공학박사(KAIST)",
         "lab": {
             "location": "센413A",
-            "phone": "02-3408-3233"
+            "phone": "02-3408-3233",
+            "site": "https://www.teedlab.com/"
         }
     }
-}
+]
+collection.drop()
+collection.insert_many(data)
+print(collection.find_one({'kor':"rnrwlgh"}))
+'''
+for i in collection.find({'kor':"국지호"}):
+    print(i)'''
